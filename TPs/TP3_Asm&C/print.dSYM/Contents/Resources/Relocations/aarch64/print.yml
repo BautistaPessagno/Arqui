@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/bautistapessagno/Desktop/ITBA/Arquitectura de Computadoras/TPs/TP3_Asm&C/print'
+relocations:     []
+...

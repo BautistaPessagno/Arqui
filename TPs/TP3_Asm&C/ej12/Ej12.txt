@@ -1,0 +1,9 @@
+Ejercicio 13:
+    Deduzca cómo se pasan las estructuras entre funciones, ¿Qué diferencia hay 
+    entre pasar una estructura por referencia o por copia? ¿Cómo es el retorno?
+
+Por copia: El struct se guarda en el stack, cada elemento por separado. Entonces,
+al pasarlo como parámetro a una función se pushean todos los elementos por
+separado para la función.
+Por referencia: En el pasaje por memoria se pushe al stack para pasarle a la
+función las direcciones de memoria de los elementos en lugar de los elementos.
