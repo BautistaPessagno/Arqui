@@ -6,6 +6,7 @@ section .text
 pooling:
     push rbp
     mov rbp, rsp
+    mov rax, 0
 
     .read_keyBoard:
         mov al, 0

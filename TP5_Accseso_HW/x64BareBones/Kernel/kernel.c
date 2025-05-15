@@ -3,6 +3,8 @@
 #include <lib.h>
 #include <moduleLoader.h>
 #include <naiveConsole.h>
+#include <keyboard.h>
+
 
 extern uint8_t text;
 extern uint8_t rodata;
@@ -83,12 +85,6 @@ void * initializeKernelBinary()
 void getTime(){
 	ncPrint("[Time]");
 	int h = geths();
-	if(h >= 3){
-		h -= 3;
-	}
-	else{
-		h = h + 24 - 3;
-	}
 	int m = getms();
 	int s = getss();
 	ncNewline();
@@ -98,13 +94,11 @@ void getTime(){
 	ncPrintHex(m);
 	ncPrint(":");
 	ncPrintHex(s);
-
 }
 
 int main()
 {	
-	
-
+	getTime();
 	ncNewline();
 
 	ncNewline();
@@ -125,13 +119,14 @@ int main()
 	ncPrint((char*)sampleDataModuleAddress);
 	ncNewline();
 
-	// while (1)
-	// {
-	// 	char c = KeyBoardMapping();
-	// 	ncPrint(c);
-	// }
-
-
+	char c;
+	do
+	{
+		c = mapKeyBoard();
+		ncPrint(c);
+	} while (c != '\n');
+	
+	
 	ncPrint("[Finished]");
 	return 0;
 }
