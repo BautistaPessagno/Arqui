@@ -4,6 +4,7 @@
 #include <moduleLoader.h>
 #include <naiveConsole.h>
 
+
 extern uint8_t text;
 extern uint8_t rodata;
 extern uint8_t data;
@@ -80,8 +81,27 @@ void * initializeKernelBinary()
 	return getStackBase();
 }
 
+void getTime(){
+	ncPrint("[Time]");
+	int h = geths();
+	int m = getms();
+	int s = getss();
+	ncNewline();
+	ncPrint("  Current time: ");
+	ncPrintHex(h);
+	ncPrint(":");
+	ncPrintHex(m);
+	ncPrint(":");
+	ncPrintHex(s);
+
+}
+
 int main()
 {	
+	
+
+	ncNewline();
+
 	ncNewline();
 	ncPrint("[Kernel Main]");
 	ncNewline();
