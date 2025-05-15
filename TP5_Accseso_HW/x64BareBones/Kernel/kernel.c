@@ -4,7 +4,6 @@
 #include <moduleLoader.h>
 #include <naiveConsole.h>
 
-
 extern uint8_t text;
 extern uint8_t rodata;
 extern uint8_t data;
@@ -84,6 +83,12 @@ void * initializeKernelBinary()
 void getTime(){
 	ncPrint("[Time]");
 	int h = geths();
+	if(h >= 3){
+		h -= 3;
+	}
+	else{
+		h = h + 24 - 3;
+	}
 	int m = getms();
 	int s = getss();
 	ncNewline();
@@ -120,6 +125,15 @@ int main()
 	ncPrint((char*)sampleDataModuleAddress);
 	ncNewline();
 
+	// while (1)
+	// {
+	// 	char c = KeyBoardMapping();
+	// 	ncPrint(c);
+	// }
+
+
 	ncPrint("[Finished]");
 	return 0;
 }
+
+
