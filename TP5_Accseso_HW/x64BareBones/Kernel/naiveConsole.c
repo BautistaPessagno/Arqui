@@ -22,16 +22,6 @@ void ncPrintChar(char character)
 	currentVideo += 2;
 }
 
-#define STDOUT 1
-#define STDERR 2
-
-
-void nc_print_base(uint64_t value, uint32_t base)
-{
-    uint_to_base(value, buffer, base);
-    nc_print(buffer);
-}
-
 void ncNewline()
 {
 	do
