@@ -96,6 +96,23 @@ void getTime(){
 	ncPrintHex(s);
 }
 
+void ncPrintKeys(){
+	//ncPrint("[Keyboard]");
+	// ncNewline();
+	// ncPrint("  Press any key to see its scan-code");
+	// ncNewline();
+	// ncPrint("  Press 'q' to quit");
+	// ncNewline();
+
+	// -->>>escribe pero escribe mal
+	char c;
+	do
+	{
+		c = mapKeyBoard();
+		ncPrint(c);
+	} while (c != '\n');
+}
+
 int main()
 {	
 	getTime();
@@ -119,12 +136,8 @@ int main()
 	ncPrint((char*)sampleDataModuleAddress);
 	ncNewline();
 
-	char c;
-	do
-	{
-		c = mapKeyBoard();
-		ncPrint(c);
-	} while (c != '\n');
+	ncPrintKeys();
+	ncNewline();
 	
 	
 	ncPrint("[Finished]");
