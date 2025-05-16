@@ -10,12 +10,17 @@ static const char keymap[128] = {
 };
 
 
-char mapKeyBoard(){// Print the keyboard message
+char getKey(){
     char c = 0;
     int scancode = kbFlag(); // Read the scan code from the keyboard controller
-   
-    c = keymap[scancode];
+    if (scancode < 128) {
+        c = keymap[scancode];
+    }
+    return c;
+}
 
+char mapKeyBoard(){// Print the keyboard message
+    char c = getKey(); // Get the character from the keyboard
     ncPrintChar(c); // Print the character to the console
     return c;
 }

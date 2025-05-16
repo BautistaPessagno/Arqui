@@ -4,6 +4,7 @@
 #include "keyboard.h"
 #include <naiveConsole.h>
 
+char getKey();
 char mapKeyBoard();
 
 #endif

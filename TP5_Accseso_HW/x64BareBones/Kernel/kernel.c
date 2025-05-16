@@ -4,6 +4,7 @@
 #include <moduleLoader.h>
 #include <naiveConsole.h>
 #include <keyboard.h>
+#include <idtLoader.h>
 
 
 extern uint8_t text;
@@ -97,7 +98,8 @@ void getTime(){
 }
 
 void ncPrintKeys(){
-	// -->>>escribe pero escribe mal
+	ncPrint("[Keyboard]");
+	ncNewline();
 	char c;
 	do
 	{
@@ -107,6 +109,12 @@ void ncPrintKeys(){
 
 int main()
 {	
+	ncPrint("[Loading IDT]");
+	load_idt();
+	ncNewline();
+	ncPrint("[Done]");
+
+	ncNewline();
 	getTime();
 	ncNewline();
 
@@ -119,13 +127,20 @@ int main()
 	ncPrint("  Calling the sample code module returned: ");
 	ncPrintHex(((EntryPoint)sampleCodeModuleAddress)());
 	ncNewline();
-	ncNewline();
 
 	ncPrint("  Sample data module at 0x");
 	ncPrintHex((uint64_t)sampleDataModuleAddress);
 	ncNewline();
 	ncPrint("  Sample data module contents: ");
 	ncPrint((char*)sampleDataModuleAddress);
+	ncNewline();
+	ncPrint("Press enter to continue...");
+	char c;
+	do
+	{
+		c = getKey();
+	} while (c != '\n');
+	ncClear();
 	ncNewline();
 
 	ncPrintKeys();
