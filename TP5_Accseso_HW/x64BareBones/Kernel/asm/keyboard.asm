@@ -1,28 +1,26 @@
-GLOBAL pooling
+GLOBAL kbFlag
 
 section .text
 
+kbFlag: push rbp
+        mov rbp, rsp
 
-pooling:
-    push rbp
-    mov rbp, rsp
-    mov rax, 0
+        mov rax, 0
+loop:   in al, 0x64
+        mov cl, al
+        and al, 0x01
+        cmp al, 0
+        je loop
+        in al, 0x60
 
-    .read_keyBoard:
-        mov al, 0
-        in al, 64h
-        test al, 1
-        je .read_keyBoard
-
-    .found:
-        in al, 60h
-        
-        
         mov rsp, rbp
         pop rbp
-
         ret
-        
+
+
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 #include "keyboard.h"
+#include <naiveConsole.h>
 // Mapeo de scan-codes (hex) a caracteres ASCII (sin Shift)
 static const char keymap[128] = {
     0,    27,  '1',  '2',  '3',  '4',  '5',  '6',  '7',  '8',  '9',  '0',  '-',  '=', '\b', // 0x00 - 0x0E (Backspace)
@@ -9,11 +10,12 @@ static const char keymap[128] = {
 };
 
 
-char mapKeyBoard(){
-    char i = pooling();
+char mapKeyBoard(){// Print the keyboard message
     char c = 0;
-    if(i >= 0 && i < 128){
-        c = keymap[i];
-    }
+    int scancode = kbFlag(); // Read the scan code from the keyboard controller
+   
+    c = keymap[scancode];
+
+    ncPrintChar(c); // Print the character to the console
     return c;
 }

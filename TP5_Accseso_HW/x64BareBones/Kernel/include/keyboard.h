@@ -1,7 +1,8 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include <stdint.h>
+#include "keyboard.h"
+#include <naiveConsole.h>
 
 char mapKeyBoard();
 

@@ -97,19 +97,11 @@ void getTime(){
 }
 
 void ncPrintKeys(){
-	//ncPrint("[Keyboard]");
-	// ncNewline();
-	// ncPrint("  Press any key to see its scan-code");
-	// ncNewline();
-	// ncPrint("  Press 'q' to quit");
-	// ncNewline();
-
 	// -->>>escribe pero escribe mal
 	char c;
 	do
 	{
 		c = mapKeyBoard();
-		ncPrint(c);
 	} while (c != '\n');
 }
 
