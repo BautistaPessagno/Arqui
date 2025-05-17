@@ -103,8 +103,8 @@ static uint32_t uintToBase(uint64_t value, char * buffer, uint32_t base)
 	return digits;
 }
 
-void ncPrintStyledChar(char character, char background, char foreground) {
-	*currentVideo = character;
-	*(currentVideo + 1) = (background << 4) | (foreground & 0x0F);
-	currentVideo += 2;
-}
+// void ncPrintStyledChar(char character, char background, char foreground) {
+// 	*currentVideo = character;
+// 	*(currentVideo + 1) = (background << 4) | (foreground & 0x0F);
+// 	currentVideo += 2;
+// }

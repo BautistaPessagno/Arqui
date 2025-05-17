@@ -109,11 +109,7 @@ void ncPrintKeys(){
 
 int main()
 {	
-	ncPrint("[Loading IDT]");
-	load_idt();
-	ncNewline();
-	ncPrint("[Done]");
-
+	//ej 3
 	ncNewline();
 	getTime();
 	ncNewline();
@@ -135,15 +131,25 @@ int main()
 	ncPrint((char*)sampleDataModuleAddress);
 	ncNewline();
 	ncPrint("Press enter to continue...");
+	//ej 2, 3, 4, 5
 	char c;
 	do
 	{
 		c = getKey();
 	} while (c != '\n');
+
 	ncClear();
 	ncNewline();
 
-	ncPrintKeys();
+	ncPrint("[Loading IDT]");
+	ncNewline();
+	load_idt();
+	ncNewline();
+	ncPrint("[Done]");
+	ncNewline();
+
+
+	// ncPrintKeys();
 	ncNewline();
 	
 	
