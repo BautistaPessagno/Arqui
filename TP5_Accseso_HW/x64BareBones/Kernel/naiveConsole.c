@@ -61,6 +61,15 @@ void ncClear()
 	currentVideo = video;
 }
 
+void ncBackspace()
+{
+	if (currentVideo > video)
+	{
+		currentVideo -= 2;
+		*currentVideo = ' ';
+	}
+}
+
 static uint32_t uintToBase(uint64_t value, char * buffer, uint32_t base)
 {
 	char *p = buffer;
@@ -92,4 +101,10 @@ static uint32_t uintToBase(uint64_t value, char * buffer, uint32_t base)
 	}
 
 	return digits;
+}
+
+void ncPrintStyledChar(char character, char background, char foreground) {
+	*currentVideo = character;
+	*(currentVideo + 1) = (background << 4) | (foreground & 0x0F);
+	currentVideo += 2;
 }
