@@ -12,5 +12,7 @@ void ncPrintBin(uint64_t value);
 void ncPrintBase(uint64_t value, uint32_t base);
 void ncClear();
 void ncBackspace();
+void ncPrintStyledChar(char character, char background, char foreground);
+void ncPrintStyledString(const char * string, char background, char foreground);
 
 #endif
