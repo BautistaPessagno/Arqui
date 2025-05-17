@@ -12,11 +12,13 @@ GLOBAL _irq02Handler
 GLOBAL _irq03Handler
 GLOBAL _irq04Handler
 GLOBAL _irq05Handler
+GLOBAL _sysCallHandler
 
 GLOBAL _exception0Handler
 
 EXTERN irqDispatcher
 EXTERN exceptionDispatcher
+EXTERN sysCallDispatcher
 
 SECTION .text
 
@@ -137,6 +139,22 @@ _irq04Handler:
 ;USB
 _irq05Handler:
 	irqHandlerMaster 5
+
+;System Call
+_sysCallHandler:
+	pushState
+
+	mov rdi, rax ; pasaje de parametro
+	mov rsi, rbx ; pasaje de parametro
+	mov rdx, rcx ; pasaje de parametro
+	call sysCallDispatcher
+
+	; signal pic EOI (End of Interrupt)
+	mov al, 20h
+	out 20h, al
+
+	popState
+	iretq
 
 
 ;Zero Division Exception
