@@ -139,7 +139,6 @@ int main()
 	} while (c != '\n');
 
 	ncClear();
-	ncNewline();
 	ncPrintStyledString("Arquitectura de Computadoras", 0x0, 0x4);
 	ncNewline();
 	ncPrint("[Loading IDT]");
